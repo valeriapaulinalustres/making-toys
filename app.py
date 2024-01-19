@@ -24,7 +24,9 @@ OpenAIkey = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=OpenAIkey)
 
 def generar_idea_juguete(edad, sexo, materiales):
+
     prompt = f"Idea de juguete para un niño de {edad} años, {sexo}, utilizando {', '.join(materiales)}: "
+    
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[  
@@ -32,11 +34,7 @@ def generar_idea_juguete(edad, sexo, materiales):
 
         ]
 
-        # engine="text-davinci-003",
-        # prompt=prompt,
-        # max_tokens=100,
-        # temperature=0.7,
-        # stop=None,
+  
     )
     response = response.choices[0].message.content
 
@@ -54,6 +52,10 @@ st.markdown(
     "<h1 style='text-align: center; color: #FF7F50;'>Generador de Ideas de Juguetes Para Niños</h1>",
     unsafe_allow_html=True
 )
+
+# Descripción debajo del título principal
+st.markdown("Bienvenido al Generador de Ideas de Juguetes. Ingresa la información del niño y los materiales disponibles para obtener ideas creativas de juguetes.")
+
 
 
 # Recopila la información del usuario
