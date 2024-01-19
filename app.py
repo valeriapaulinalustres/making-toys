@@ -8,6 +8,8 @@
 #al final poner pip freeze > requirements.txt para que cree el archivo con las dependencias
 #levantar en streamlit con streamlit run ..\..\app.py
 
+#deactivate para salir del modo virtual
+
 
 import streamlit as st
 from openai import OpenAI
@@ -41,7 +43,18 @@ def generar_idea_juguete(edad, sexo, materiales):
     return response
 
 # Interfaz de usuario con Streamlit
-st.title("Generador de Ideas de Juguetes para Niños")
+st.set_page_config(
+    page_title="Making Toys",
+    page_icon="🚀",
+  
+)
+
+
+st.markdown(
+    "<h1 style='text-align: center; color: #FF7F50;'>Generador de Ideas de Juguetes Para Niños</h1>",
+    unsafe_allow_html=True
+)
+
 
 # Recopila la información del usuario
 edad = st.slider("Edad del niño", 1, 12, 6)
@@ -55,3 +68,4 @@ if st.button("Generar Idea"):
     else:
         idea = generar_idea_juguete(edad, sexo.lower(), materiales_disponibles)
         st.success(f"Idea generada: {idea}")
+
