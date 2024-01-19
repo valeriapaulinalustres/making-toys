@@ -57,6 +57,13 @@ st.markdown(
 st.markdown("Bienvenido al Generador de Ideas de Juguetes. Ingresa la información del niño y los materiales disponibles para obtener ideas creativas de juguetes.")
 
 
+# Botón para mostrar la ventana emergente de cómo funciona
+if st.button("Cómo funciona?"):
+    st.info(
+        """
+Para generar ideas de juguetes, selecciona la edad del niño, el sexo y los materiales disponibles. Luego presiona el botón "Generar idea". ¡Listo!
+        """
+    )
 
 # Recopila la información del usuario
 edad = st.slider("Edad del niño", 1, 12, 6)
@@ -71,12 +78,4 @@ if st.button("Generar Idea"):
         idea = generar_idea_juguete(edad, sexo.lower(), materiales_disponibles)
         st.success(f"Idea generada: {idea}")
 
-        # Botón para mostrar la ventana emergente
-if st.button("Cómo funciona?"):
-    st.info(
-        """
-        Aquí puedes proporcionar información adicional sobre cómo funciona tu aplicación.
-        Por ejemplo, puedes explicar el proceso de generación de ideas de juguetes o brindar instrucciones detalladas.
-        """
-    )
 
